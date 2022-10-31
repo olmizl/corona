@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>COVID 19</title>
+
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="css/fancybox.css" rel="stylesheet" />
+
+    <script src="js/greensock/gsap.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/dayjs.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/fancybox.umd.js"></script>
+    <script src="js/chart.min.js"></script>
+  </head>
+  <body>
+    <header id="header">
+      <h1><span class="material-icons"> masks </span><strong>COVID 19</strong><span class="material-icons"> masks </span></h1>
+    </header>
+
+    <div class="icon">
+      <span class="material-icons"> coronavirus </span>
+      <span class="material-icons"> coronavirus </span>
+      <span class="material-icons"> coronavirus </span>
+      <span class="material-icons"> coronavirus </span>
+      <span class="material-icons"> coronavirus </span>
+    </div>
+
+    <main id="main">
+      <div class="corona">
+        <canvas id="coronaChart">
+          <!-- 그림 그려지는 곳 -->
+        </canvas>
+      </div>
+      <div class="calendarBox">
+        <input type="text" id="txtCalendar" value="" name="inputValue" />
+
+        <div class="calendar">
+          <div class="header">
+            <button class="prevMonth"><span class="material-icons"> arrow_back_ios </span></button>
+            <div>
+              <div class="monthBox">
+                <span class="year">2022</span>
+                <span class="month">07</span>
+              </div>
+            </div>
+            <button class="nextMonth"><span class="material-icons"> arrow_forward_ios </span></button>
+          </div>
+          <div class="days">
+            <ul>
+              <li class="sun"><span>sun</span></li>
+              <li><span>mon</span></li>
+              <li><span>tue</span></li>
+              <li><span>wed</span></li>
+              <li><span>thu</span></li>
+              <li><span>fri</span></li>
+              <li class="sat"><span>sat</span></li>
+            </ul>
+          </div>
+          <div class="dates">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script>
+    const now = new Date();
+    let currentNow = new Date();
+    const calendar = $(".calendar");
+    const btnPrevMonth = $(".calendar .prevMonth");
+    const btnNextMonth = $(".calendar .nextMonth");
+    const txtCalendar = $(".calendarBox #txtCalendar");
+    const icon = $(".icon");
+
+    txtCalendar.on("click", function () {
+      calendar.toggleClass("show");
+    });
+    //--------------------------------------------------------------------------
+
+    const makeCalendar = function (year, month) {
+      const datesUl = $(".calendar .dates ul");
+      const textYear = $(".calendar .header .year");
+      const textMonth = $(".calendar .header .month");
+      const firstDate = new Date(year, month, 1);
+      //달력 만들 때 달의 1월을 기준으로 한다.
+      // console.log(now);
+      // console.log(firstDate);
+      const leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      const notleapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+      let selectedYear = null;
+      let tempHtml = "";
+      let count = 0;
+
+      if (firstDate.getFullYear() % 4 === 0) {
+        if (firstDate.getFullYear() % 100 === 0) {
+          selectedYear = notleapYear;
+        } else {
+          selectedYear = leapYear;
+        }
+      } else {
+        selectedYear = notleapYear;
+      }
+      if (firstDate.getFullYear() % 400 === 0) {
+        selectedYear = leapYear;
+      }
+
+      const tempMonth = firstDate.getMonth() + 1;
+      textYear.text(firstDate.getFullYear());
+      textMonth.text(tempMonth < 10 ? "0" + tempMonth : tempMonth);
+
+      for (let i = 0; i < 42; i++) {
+        if (i < firstDate.getDay()) {
+          tempHtml += `<li class="blank"><span></span></li>`;
+        } else {
+          count++;
+          if (now.getFullYear() === firstDate.getFullYear() && now.getMonth() === firstDate.getMonth() && now.getDate() === count) {
+            tempHtml += `<li class="today" data-year="${firstDate.getFullYear()}" data-month="${firstDate.getMonth() + 1}" data-date ="${count}"><span>${count}</span></li>`;
+          } else {
+            tempHtml += `<li data-year="${firstDate.getFullYear()}" data-month="${firstDate.getMonth() + 1}" data-date ="${count}"><span>${count}</span></li>`;
+          }
+        }
+        if (count >= selectedYear[firstDate.getMonth()]) {
+          break;
+        }
+      }
+      datesUl.html(tempHtml);
+      gsap.from(".calendar .dates li", { scale: 0, ease: "elastic", duration: 1, stagger: { each: 0.05, from: "start" } });
+    };
+
+    makeCalendar(now.getFullYear(), now.getMonth());
+    btnPrevMonth.on("click", function () {
+      currentNow = new Date(currentNow.getFullYear(), currentNow.getMonth() - 1);
+      makeCalendar(currentNow.getFullYear(), currentNow.getMonth());
+    });
+
+    btnPrevMonth.on("click", function () {
+      currentNow = new Date(currentNow.getFullYear(), currentNow.getMonth() - 1);
+      makeCalendar(currentNow.getFullYear(), currentNow.getMonth());
+    });
+    btnNextMonth.on("click", function () {
+      currentNow = new Date(currentNow.getFullYear(), currentNow.getMonth() + 1);
+      makeCalendar(currentNow.getFullYear(), currentNow.getMonth());
+    });
+
+    $(".calendar .dates").on("click", "li", function () {
+      //이벤트 위임은 function 전에 써주기
+      const selectedDate = $(this).data("year") + addZero($(this).data("month")) + addZero($(this).data("date"));
+      $(this).addClass("select").siblings().removeClass("select");
+      loadCorona(selectedDate);
+      console.log(selectedDate);
+      $("input[name=inputValue]").attr("value", selectedDate);
+      icon.addClass("iconShow");
+    });
+
+    const ctx = document.querySelector("#coronaChart").getContext("2d");
+    let coronaChart = null;
+    const loadCorona = function (selectDay) {
+      $.ajax({
+        url: "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson",
+        data: {
+          ServiceKey: "9GVzTna0CNGL8YnItEcLSgcldQAvfTw59R2+k7q0OSvVB6kJWsUWpXr7mGi1OHu7YB5eMGs3gY2DL4v8g7QkNQ==",
+          _type: "json",
+          startCreateDt: selectDay,
+          endCreateDt: selectDay,
+        },
+        success: function (data) {
+          console.log(data);
+        },
+      }).done(function (response) {
+        const coronaList = response.response.body.items.item;
+        console.log(coronaList);
+        const incDecList = [];
+
+        $.each(coronaList, function (idx, item) {
+          sidoList.push(item.gubun);
+          incDecList.push(item.incDec);
+        });
+        console.log(sidoList);
+        console.log(incDecList);
+        if (coronaChart !== null) {
+          coronaChart.destroy();
+        }
+        coronaChart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: sidoList,
+            datasets: [
+              {
+                label: "",
+                data: incDecList,
+                backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"],
+                borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)"],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            plugins: {
+              legend: {
+                display: false,
+              },
+              title: {
+                display: true,
+                text: "COVID 19 발생현황",
+                color: "#fff",
+                font: {
+                  family: "맑음",
+                  size: 30,
+                },
+              },
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      });
+    };
+
+    const addZero = function (num) {
+      return num < 10 ? "0" + num : "" + num;
+    };
+    // loadCorona(now.getFullYear() + addZero(now.getMonth() + 1) + addZero(now.getDate()));
+
+    // 2번째 방법 ( data 따로 안쓰기 )
+    //  $.ajax({
+    //   url: "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?ServiceKey=Wnus4QpirWGI56CfvzMWDIDHMRL%2FmEF%2FqTl9gwVNbRggLYTGPFIdwBy0L51B%2B27d5QRbLanNmIAxPwNvl7dKPA%3D%3D&_type=json",
+    // }).done(function (response) {
+    //   console.log(response);
+    // });
+  </script>
+</html>

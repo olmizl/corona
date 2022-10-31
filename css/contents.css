@@ -1,0 +1,453 @@
+@charset "UTF-8";
+.subVisual {
+  height: 690px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+.subVisual .titleBox {
+  color: #fff;
+  line-height: 1.5;
+  margin-top: 50px;
+  margin-left: 220px;
+}
+.subVisual .titleBox .subTitle {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+#contact {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+  font-size: 18px;
+  caret-color: orange;
+}
+#contact .contents {
+  padding: 180px 0;
+  display: flex;
+  flex-direction: column;
+}
+#contact .contents .inquiry {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+#contact .contents .inquiry .h3 {
+  font-size: 36px;
+  display: flex;
+  font-weight: 700;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#contact .contents .inquiry .agree {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+#contact .contents .inquiry .agree .grey {
+  color: #999;
+}
+#contact .contents .inquiry .agree span {
+  font-weight: 500;
+}
+#contact .contents .inquiry .txt {
+  line-height: 1.5;
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-size: 16px;
+  background-color: #fbfbfb;
+  color: #999;
+  font-weight: 300;
+  padding-left: 20px;
+}
+#contact .contents .inquiry .txt .bold {
+  color: #000;
+  font-weight: 500;
+  margin: 14px 0;
+}
+#contact .contents .container {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+#contact .contents .container ::placeholder {
+  font-size: 18px;
+}
+#contact .contents .container .label {
+  margin-bottom: 20px;
+}
+#contact .contents .container .label .select {
+  width: 100%;
+}
+#contact .contents .container .label dd {
+  display: flex;
+  width: 100%;
+}
+#contact .contents .container .label dd input {
+  height: 50px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+#contact .contents .container .label dd input:focus {
+  border-bottom: 1px solid orange;
+  transition: all 0.25s ease-in-out;
+}
+#contact .contents .container .label dd .text {
+  color: #aaa;
+  width: 100%;
+}
+#contact .contents .container .label dd .w50 {
+  width: calc(50% - 10px);
+  margin-right: 10px;
+}
+#contact .contents .container .label .textarea {
+  width: 100%;
+}
+#contact .contents .container .label .textarea textarea {
+  width: calc(100% - 20px);
+  height: 400px;
+  outline: none;
+  font-family: inherit;
+  padding: 20px 0 0 20px;
+  resize: none;
+}
+#contact .contents .container .label .textarea textarea:focus {
+  border: 1px solid orange;
+  transition: all 0.25s ease-in-out;
+}
+#contact .contents .container #fileBox {
+  width: 100%;
+}
+#contact .contents .container #fileBox p {
+  color: #999;
+  font-size: 12px;
+}
+#contact .contents .container #fileBox .fileBox {
+  width: 100%;
+  display: flex;
+}
+#contact .contents .container #fileBox .fileBox label {
+  width: 150px;
+  height: 50px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#contact .contents .container #fileBox .fileBox input[type=file] {
+  width: 0;
+  height: 0;
+  position: absolute;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+}
+#contact .contents .container #fileBox .fileBox input[type=text] {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+#contact .contents .container #fileBox .fileBox input[type=text]:focus {
+  border-bottom: 1px solid orange;
+  transition: all 0.25s ease-in-out;
+}
+#contact .contents .container .label {
+  display: flex;
+  width: 100%;
+}
+#contact .contents .container .label .left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+#contact .contents .container .label .left p {
+  font-size: 12px;
+  color: #999;
+}
+#contact .contents .container .label .left select {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  height: 50px;
+}
+#contact .contents .container .floor {
+  color: #999;
+  font-size: 14px;
+}
+#contact .contents .container .floor p {
+  margin-top: 20px;
+  margin-bottom: 7px;
+}
+#contact .contents .container .floor p:before {
+  content: "·";
+  display: inline-block;
+  position: relative;
+  font-size: inherit;
+  color: inherit;
+  margin-right: 8px;
+}
+#contact .contents .container .button {
+  margin-top: 80px;
+  margin-bottom: 70px;
+  border-radius: 5px;
+  height: 80px;
+  font-weight: 700;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.subContents {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.subContents h3 {
+  font-size: 30px;
+  font-weight: 700;
+  width: 50%;
+  height: 500px;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 200px;
+}
+.subContents .contents {
+  width: 50%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 200px;
+}
+.subContents .contents .container {
+  line-height: 1.8;
+}
+.subContents .contents .container span {
+  font-size: 20px;
+  font-weight: 700;
+}
+.subContents .contents .container button {
+  border: 1px solid #999;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+  margin: 25px 0 40px 0;
+  font-weight: 700;
+}
+.subContents .contents .container p {
+  color: #999;
+}
+
+.contents02 {
+  width: 80%;
+  margin: 0 auto 300px auto;
+}
+.contents02 .traffic .con1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 100px;
+  position: relative;
+}
+.contents02 .traffic .con1:after {
+  content: "";
+  width: 43%;
+  height: 1px;
+  background-color: #ddd;
+  display: block;
+  position: absolute;
+  bottom: -90px;
+}
+.contents02 .traffic .con2 {
+  display: flex;
+  line-height: 2;
+  font-size: 18px;
+}
+.contents02 .traffic .con2 .txt {
+  width: 50%;
+}
+.contents02 .traffic .con2 .txt .subway {
+  margin: 60px 0;
+  position: relative;
+}
+.contents02 .traffic .con2 .txt .subway:after {
+  content: "";
+  width: 85%;
+  height: 1px;
+  background-color: #ddd;
+  display: block;
+  position: absolute;
+  bottom: -40px;
+}
+.contents02 .traffic .con2 .txt .bus {
+  margin: 60px 0;
+  position: relative;
+}
+.contents02 .traffic .con2 .txt .bus:after {
+  content: "";
+  width: 85%;
+  height: 1px;
+  background-color: #ddd;
+  display: block;
+  position: absolute;
+  bottom: -60px;
+}
+.contents02 .traffic .con2 .txt .bus .dot {
+  position: relative;
+  margin-left: 25px;
+}
+.contents02 .traffic .con2 .txt .bus .dot:before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: rgb(0, 0, 0);
+  display: block;
+  position: absolute;
+  left: -20px;
+  top: 12px;
+}
+.contents02 .traffic .con2 .txt span {
+  font-size: 24px;
+  font-weight: 700;
+  bottom: 50px;
+}
+.contents02 .traffic .con2 .txt .LF {
+  margin-top: 170px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 2;
+}
+.contents02 .traffic .con2 .txt .LF .orange {
+  color: #e69500;
+}
+.contents02 .traffic .con2 img {
+  width: 50%;
+}
+
+#about .subVisual {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../images/contents/bg_company_intro.jpg");
+}
+#about .subVisual .titleBox {
+  color: #fff;
+  line-height: 1.5;
+  margin-top: 20px;
+  margin-left: 0;
+}
+#about .subVisual .titleBox .subTitle {
+  font-size: 32px;
+  font-weight: 700;
+}
+#about .combi .contents {
+  width: 100%;
+  background-color: #000;
+  height: 100vh;
+  padding: 200px auto;
+}
+#about .combi .contents .b2ctxt {
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #fff;
+}
+#about .combi .contents .b2ctxt .B2C span {
+  font-size: 64px;
+  font-weight: 700;
+}
+#about .combi .contents .b2ctxt .text strong {
+  font-weight: 700;
+  font-size: 20px;
+}
+#about .combi .contents .b2ctxt .text > p {
+  margin-bottom: 80px;
+  line-height: 2;
+}
+
+#location .subVisual {
+  height: 690px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../images/contents/subvisual04.jpg");
+}
+#location .subVisual .titleBox {
+  color: #fff;
+  line-height: 1.5;
+  margin-top: 50px;
+  margin-left: 220px;
+}
+#location .subVisual .titleBox .subTitle {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.overlay {
+  background-color: #e77612;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px;
+  position: absolute;
+  overflow: hidden;
+  text-shadow: 1px 1px 0px #b85e0e,2px 2px 0px #b85e0e,3px 3px 0px #b85e0e,4px 4px 0px #b85e0e,5px 5px 0px #b85e0e,6px 6px 0px #b85e0e,7px 7px 0px #b85e0e,8px 8px 0px #b85e0e,9px 9px 0px #b85e0e,10px 10px 0px #b85e0e,11px 11px 0px #b85e0e,12px 12px 0px #b85e0e,13px 13px 0px #b85e0e,14px 14px 0px #b85e0e,15px 15px 0px #b85e0e,16px 16px 0px #b85e0e,17px 17px 0px #b85e0e,18px 18px 0px #b85e0e,19px 19px 0px #b85e0e,20px 20px 0px #b85e0e,21px 21px 0px #b85e0e,22px 22px 0px #b85e0e,23px 23px 0px #b85e0e,24px 24px 0px #b85e0e,25px 25px 0px #b85e0e,26px 26px 0px #b85e0e,27px 27px 0px #b85e0e,28px 28px 0px #b85e0e,29px 29px 0px #b85e0e,30px 30px 0px #b85e0e,31px 31px 0px #b85e0e,32px 32px 0px #b85e0e,33px 33px 0px #b85e0e,34px 34px 0px #b85e0e,35px 35px 0px #b85e0e,36px 36px 0px #b85e0e,37px 37px 0px #b85e0e,38px 38px 0px #b85e0e,39px 39px 0px #b85e0e,40px 40px 0px #b85e0e,41px 41px 0px #b85e0e,42px 42px 0px #b85e0e,43px 43px 0px #b85e0e,44px 44px 0px #b85e0e,45px 45px 0px #b85e0e,46px 46px 0px #b85e0e,47px 47px 0px #b85e0e,48px 48px 0px #b85e0e,49px 49px 0px #b85e0e,50px 50px 0px #b85e0e,51px 51px 0px #b85e0e,52px 52px 0px #b85e0e,53px 53px 0px #b85e0e,54px 54px 0px #b85e0e,55px 55px 0px #b85e0e,56px 56px 0px #b85e0e,57px 57px 0px #b85e0e,58px 58px 0px #b85e0e,60px 60px 0px #b85e0e;
+}
+.overlay .adderss {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.overlay:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: #e77612;
+  position: absolute;
+  left: calc(50% - 5px);
+  bottom: -20px;
+}

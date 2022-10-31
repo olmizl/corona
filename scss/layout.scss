@@ -1,0 +1,212 @@
+@import "vars";
+@import "mixin";
+
+body {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: 20px;
+  color: #111;
+  background-color: #000;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#header {
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  z-index: 99;
+  text-align: center;
+  font-size: 25px;
+  vertical-align: center;
+  h1 {
+    height: 100%;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    overflow: hidden;
+    strong {
+      @include longShadow(#aaa, 60);
+    }
+    span {
+      font-size: 46px;
+      margin: 0 80px;
+    }
+  }
+}
+
+.icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: none;
+  transition: all 0.5s ease-in-out;
+  &.iconShow {
+    display: block;
+  }
+  span {
+    color: #fff;
+    position: absolute;
+    &:nth-child(1) {
+      font-size: 75px;
+      top: 100px;
+      left: 13%;
+    }
+    &:nth-child(2) {
+      font-size: 45px;
+      top: 203px;
+      right: 27%;
+    }
+    &:nth-child(3) {
+      font-size: 50px;
+      top: 705px;
+      left: 5%;
+    }
+    &:nth-child(4) {
+      font-size: 57px;
+      top: 606px;
+      right: 9%;
+    }
+    &:nth-child(5) {
+      font-size: 30px;
+      top: 38px;
+      left: 59%;
+    }
+  }
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+.corona {
+  width: 1200px;
+  height: 600px;
+  margin: 100px auto 0;
+  background-color: #000;
+}
+
+.calendarBox {
+  input[type="text"] {
+    background-color: #ddd;
+    border-radius: 17px;
+    width: 297px;
+    height: 30px;
+    right: 22px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  #txtCalendar {
+    position: absolute;
+    top: 132px;
+  }
+  .calendar {
+    position: absolute;
+    top: 19%;
+    right: 20px;
+    width: 265px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+    &.show {
+      display: block;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      button {
+        border: none;
+        outline: none;
+        background: none;
+        cursor: pointer;
+      }
+      .month {
+        font-weight: 700;
+      }
+    }
+    .days {
+      margin: 10px 0;
+      text-transform: uppercase;
+      .sun span {
+        background-color: darken(#f00, 12);
+      }
+      .sat span {
+        background-color: darken(blue, 12);
+      }
+    }
+    .dates {
+      li {
+        cursor: pointer;
+      }
+    }
+    .days,
+    .dates {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 14px;
+        font-weight: 500;
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: calc(100% / 7 - 6px);
+          position: relative;
+          margin: 3px;
+          &.today span {
+            background-color: green;
+            font-weight: 700;
+            overflow: hidden;
+            @include longShadow(darken(green, 12), 30);
+          }
+          &.select span {
+            background-color: orange;
+            color: #fff;
+            font-weight: 700;
+            border: 2px solid darken(orange, 30);
+            overflow: hidden;
+            @include longShadow(brown, 30);
+          }
+          &.blank span {
+            background-color: transparent;
+            pointer-events: none;
+          }
+          &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+          }
+          span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border-radius: 100px;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.25;
+          }
+        }
+      }
+    }
+  }
+}
